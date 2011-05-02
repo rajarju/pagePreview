@@ -1,0 +1,42 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Preview Link</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- jquery is served from drupal :P -->
+    <script type="text/javascript" src="http://localhost/d6/misc/jquery.js"></script>
+    <script>
+      $(function(){
+        $('#go').click(function(e){
+          e.preventDefault();
+          $.ajax({
+            url: 'read',
+            data: {
+              target_url: $('#url').val()
+            },
+            dataType: 'json',
+            success: function(data){
+              console.log(data);
+            },
+            error: function(err, xhr){
+              console.log('oops');
+              console.log(err);
+              console.log(xhr);
+            }
+          })
+        })
+      })
+    </script>
+  </head>
+  <body>
+    Paste  a Link here and Preview it
+    <form>
+      <input id="url" type="text" value="" />
+      <input id="go" type="submit" value="Go" />
+    </form>
+  </body>
+</html>
