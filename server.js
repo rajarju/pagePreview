@@ -67,7 +67,7 @@ var app = http.createServer(function(req, res){
               data.desc = $('meta',  window.document).filter(function(){
                 if($(this).attr('name') == 'description')
                   return true;
-              }).text();
+              }).attr('content');
 
               if(data.desc == ''){
                 data.desc = $('p', window.document).eq(0).text();
