@@ -21,19 +21,22 @@ and open the template in the editor.
             },
             dataType: 'json',
             success: function(data){
-              console.log(data);
+              //console.log(data);
               $('#preview').html('');
               $('#preview').append($('<h2>').html(data.title));
               $('#preview').append($('<p>').html(data.desc));
               $(data.img).each(function(i,j){
-                $('#preview').append($('<img>').attr('src', j));
+                $('<img />').attr('src', j).load(function(){
+                  $('#preview').append($(this));
+                })
+                
               });
 
             },
             error: function(err, xhr){
-              console.log('oops');
-              console.log(err);
-              console.log(xhr);
+              //console.log('oops');
+              //console.log(err);
+              //console.log(xhr);
             }
           })
         })

@@ -64,7 +64,11 @@ var app = http.createServer(function(req, res){
               };
               data.title = $('title', window.document).text();
           
-              data.desc = $('meta[name=description]', window.document).text();
+              data.desc = $('meta',  window.document).filter(function(){
+                if($(this).attr('name') == 'description')
+                  return true;
+              }).text();
+
               if(data.desc == ''){
                 data.desc = $('p', window.document).eq(0).text();
               }
