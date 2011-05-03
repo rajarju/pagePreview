@@ -21,6 +21,13 @@ and open the template in the editor.
             dataType: 'json',
             success: function(data){
               console.log(data);
+
+              $('#preview').append($('<h2>').html(data.title));
+              $('#preview').append($('<p>').html(data.desc));
+              $(data.img).each(function(i,j){
+                $('#preview').append($('<img>').attr('src', j));
+              });
+
             },
             error: function(err, xhr){
               console.log('oops');
@@ -38,5 +45,8 @@ and open the template in the editor.
       <input id="url" type="text" value="" />
       <input id="go" type="submit" value="Go" />
     </form>
+    <div id="preview">
+      
+    </div>
   </body>
 </html>

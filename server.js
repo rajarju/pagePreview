@@ -42,12 +42,12 @@ var app = http.createServer(function(req, res){
       var query =  url.parse(req.url, true).query;
       
       var target_host = url.parse(query.target_url, true).host;
-
+      
       if(query.target_url){
         //Should Clean this
         //SHould checkif valud
         var target_url = query.target_url;
-
+        console.log(target_host);
 
         request({
           uri : target_url
@@ -78,7 +78,7 @@ var app = http.createServer(function(req, res){
                   format: 'jpg',
                   width:   100
                 }, function(err, stdout, stderr){
-                  if (err) throw err
+                  //if (err) throw err
                   console.log('resized ' + j.src + ' to fit within 100xx');
                 });
                 //Generate new url
@@ -88,7 +88,7 @@ var app = http.createServer(function(req, res){
 
               //  console.log(data);
               res.writeHead(200);
-              res.write(data);
+              res.write(JSON.stringify(data));
               res.end();
 
             })
@@ -110,7 +110,7 @@ var app = http.createServer(function(req, res){
       var img =  url.parse(req.url, true).query.src;
 
 
-      fs.readFile(__dirname + '/' + imagePath + img, function(err, data){
+      fs.readFile( imagePath + img, function(err, data){
         if(err) {
           sendError(404, res)
         }          
