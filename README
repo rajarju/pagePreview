@@ -1,0 +1,8 @@
+Dependencies
+1. request
+2. jsdom
+3. jquery
+4. imagemagick
+
+To install dependencies, run :
+npm install module_name
