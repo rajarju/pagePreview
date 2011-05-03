@@ -12,6 +12,7 @@ and open the template in the editor.
     <script>
       $(function(){
         $('#go').click(function(e){
+          $('#preview').html('Loading.........');
           e.preventDefault();
           $.ajax({
             url: 'read',
