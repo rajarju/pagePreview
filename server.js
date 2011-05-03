@@ -82,7 +82,7 @@ var app = http.createServer(function(req, res){
                   console.log('resized ' + j.src + ' to fit within 100xx');
                 });
                 //Generate new url
-                data.img.push('images?src=' + target_host + '-' + i + '.jpg');
+                data.img.push('./images?src=' + target_host + '-' + i + '.jpg');
 
               });
 
